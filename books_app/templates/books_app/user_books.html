@@ -1,0 +1,42 @@
+{% extends "books_app/base.html" %}
+{% block content %}
+  <!-- display username and number of books added by him -->
+  <h2 class="mb-3"> Books added by: {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h2>
+  {% for book in books %}
+  <!-- Below article block is copied from
+  https://github.com/srinidhibhat/code_snippets/blob/master/Django_Blog/snippets/article.html -->
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="{% url 'books_app-user_books' book.added_by.username %}">{{ book.added_by }}</a>
+          <small class="text-muted">{{ book.date_added|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'books_app-detail' book.id %}">{{ book.name }}</a></h2>
+        <small>by {{ book.author }}</small>
+        <p class="article-content">It has {{ book.pages }} pages.</p>
+      </div>
+    </article>
+  {% endfor %}
+  <!-- logic for adding pagination (spanning out book list over multiple pages) -->
+  {% if is_paginated %}
+    <!-- logic for link to First page -->
+    {% if page_obj.has_previous %}
+      <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+    <!-- logic for links to 3 previous and 3 next pages -->
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+    <!-- logic for link to Last page -->
+    {% if page_obj.has_next %}
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+
+  {% endif %}
+{% endblock content %}
