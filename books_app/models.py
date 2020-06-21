@@ -2,14 +2,17 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from markupfield.fields import MarkupField
+from PIL import Image
 
 class Book(models.Model):
     name = models.CharField(max_length=150)
     author = models.CharField(max_length=100)
-    notes = models.TextField(blank=True)
+    notes = MarkupField(default_markup_type='markdown', blank=True)
     date_added = models.DateTimeField(default=timezone.now)
-    pages = models.IntegerField()
+    pages = models.IntegerField(null=True, blank=True)
     added_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.name

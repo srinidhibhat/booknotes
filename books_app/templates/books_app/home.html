@@ -6,12 +6,14 @@
     <article class="media content-section">
       <div class="media-body">
         <div class="article-metadata">
-          <a class="mr-2" href="{% url 'books_app-user_books' book.added_by.username %}">{{ book.added_by }}</a>
           <small class="text-muted">{{ book.date_added|date:"F d, Y" }}</small>
         </div>
         <h2><a class="article-title" href="{% url 'books_app-detail' book.id %}">{{ book.name }}</a></h2>
-        <small>by {{ book.author }}</small>
-        <p class="article-content">It has {{ book.pages }} pages.</p>
+        <small><strong>Author: </strong>{{ book.author }}</small>
+        <br>
+        <small><strong>Added by: </strong>
+          <a class="mr-2" href="{% url 'books_app-user_books' book.added_by.username %}">{{ book.added_by }}</a>
+        </small>
       </div>
     </article>
   {% endfor %}

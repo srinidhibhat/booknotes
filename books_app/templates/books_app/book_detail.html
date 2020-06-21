@@ -17,10 +17,12 @@
           </div>
         {% endif %}
       </div>
-      <h2 class="article-title">{{ object.name }}</h2>
-      <p>Written by: {{ object.author }}</p>
-      <p class="article-content">It has {{ object.pages }} pages.</p>
-      <h5 class="article-title">Notes:</h5>
+      <h2 class="article-title"><strong>Title: </strong>{{ object.name }}</h2>
+      <p><strong>Author: </strong>{{ object.author }}</p>
+      {% if object.pages != None %}
+        <p class="article-content">It has {{ object.pages }} pages.</p>
+      {% endif %}
+      <h5 class="article-title"><strong>Notes: </strong></h5>
       <p class="article-content">{{ object.notes }} </p>
     </div>
   </article>

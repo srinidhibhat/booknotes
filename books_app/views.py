@@ -46,7 +46,7 @@ class BookDetailView(DetailView):
 # also note that for fn based views we used decorators. here we just inherit from another built-in class
 class BookCreateView(LoginRequiredMixin, CreateView):
     model = Book
-    fields = ['name', 'author', 'notes', 'pages']
+    fields = ['name', 'author', 'notes']
 
     def form_valid(self, form):
         # automatically set the 'added by' attribute to current logged in user
