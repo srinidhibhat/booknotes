@@ -12,6 +12,7 @@ class Book(models.Model):
     date_added = models.DateTimeField(default=timezone.now)
     pages = models.IntegerField(null=True, blank=True)
     added_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_read = models.DateField(null=True, blank=True)
 
 
     def __str__(self):

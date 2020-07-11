@@ -56,7 +56,7 @@ class BookCreateView(LoginRequiredMixin, CreateView):
 # view to update the book details
 class BookUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Book
-    fields = ['name', 'author', 'notes', 'pages']
+    fields = ['name', 'author', 'notes', 'pages', 'date_read']
 
     def form_valid(self, form):
         form.instance.added_by = self.request.user

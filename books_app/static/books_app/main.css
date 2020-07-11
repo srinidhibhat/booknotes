@@ -1,9 +1,10 @@
 /* This css is copied from
 https://github.com/srinidhibhat/code_snippets/blob/master/Django_Blog/snippets/main.css */
 body {
-  background: #fafafa;
+  background: #eeeeee; /* #fafafa;*/
   color: #333333;
   margin-top: 5rem;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,7 +16,7 @@ ul {
 }
 
 .bg-steel {
-  background-color: #ff8533; /*#5f788a;*/
+  background-color: #b9ac92; /*ff8533-orange; #5f788a-original;*/
 }
 
 .site-header .navbar-nav .nav-link {
@@ -83,4 +84,12 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.quote-box {
+  font-family: 'Fondamento';
+}
+
+.notes-font {
+  font-family: 'Caveat', cursive;
 }

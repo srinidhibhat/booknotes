@@ -7,8 +7,9 @@
       <div class="article-metadata">
         <!-- by default, detailed views expect 'object' as the key in context dictionary -->
         <!-- adhering to defaults allows us to write less code and use the built-in functionality  -->
-        <a class="mr-2" href="{% url 'books_app-user_books' object.added_by.username %}">{{ object.added_by }}</a>
-        <small class="text-muted">{{ object.date_added|date:"F d, Y" }}</small>
+        <small class="text-muted">added by </small>
+        <a href="{% url 'books_app-user_books' object.added_by.username %}">{{ object.added_by }}</a>
+        <small class="text-muted">on {{ object.date_added|date:"F d, Y" }}</small>
         <!-- give an option to update or delete the book if he is logged in and he has added the book -->
         {% if object.added_by == user %}
           <div>
@@ -17,13 +18,28 @@
           </div>
         {% endif %}
       </div>
-      <h2 class="article-title"><strong>Title: </strong>{{ object.name }}</h2>
-      <p><strong>Author: </strong>{{ object.author }}</p>
+      <p class="article-title">
+        <strong>Title: </strong><h3>{{ object.name }}</h3>
+      </p>
+      <p>
+        <strong>Author: </strong><h5>{{ object.author }}</h5>
+      </p>
+      <!-- display number of pages if exists -->
       {% if object.pages != None %}
-        <p class="article-content">It has {{ object.pages }} pages.</p>
+        <p>
+          <strong>Other Info: </strong>
+          <p class="article-content"> It has <strong>{{ object.pages }}</strong> pages.
+        </p>
       {% endif %}
-      <h5 class="article-title"><strong>Notes: </strong></h5>
-      <p class="article-content">{{ object.notes }} </p>
+      {% if object.date_read != None %}
+        <p>
+          <p class="article-content"> Finished reading on <strong>{{ object.date_read }}</strong>.
+        </p>
+      {% endif %}
+      <p>
+        <strong>Notes: </strong>
+      </p>
+      <div class="article-content notes-font">{{ object.notes }} </div>
     </div>
   </article>
 {% endblock content %}
