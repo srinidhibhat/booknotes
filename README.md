@@ -13,4 +13,4 @@ The design is largely inspired from <a href="https://github.com/CoreyMSchafer">C
 - Support 'Forgot password' option.
 - Make UI improvements to view the posts as thumbnails.
 - Add the 'Date Read' section for the Book detail view.
-- Remove the 'Pages' attribure from the Book detail view.
+- Remove the 'Pages' attribute from the Book detail view.
