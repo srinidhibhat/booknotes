@@ -21,7 +21,7 @@ class BookListView(ListView):
     model = Book
     template_name = 'books_app/home.html'
     context_object_name = 'books'
-    ordering = ['-date_added']
+    ordering = ['-date_read']
     # attribute to span out book list view into multiple pages (here 2 objects per page)
     paginate_by = 5
 
@@ -36,7 +36,7 @@ class UserBookListView(ListView):
     # get only those user objects which matches with selected 'added_by' attribute
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Book.objects.filter(added_by=user).order_by('-date_added')
+        return Book.objects.filter(added_by=user).order_by('-date_read')
 
 class BookDetailView(DetailView):
     model = Book
