@@ -24,22 +24,45 @@
       <p>
         <strong>Author: </strong><h5>{{ object.author }}</h5>
       </p>
+      <p>
+        <strong>Details: </strong>
+      </p>
       <!-- display number of pages if exists -->
       {% if object.pages != None %}
         <p>
-          <strong>Other Info: </strong>
           <p class="article-content"> It has <strong>{{ object.pages }}</strong> pages.
         </p>
       {% endif %}
+      <!-- display date read if exists -->
       {% if object.date_read != None %}
         <p>
           <p class="article-content"> Finished reading on <strong>{{ object.date_read }}</strong>.
         </p>
       {% endif %}
+      <!-- display time taken to read if exists -->
+      {% if object.time_taken != None %}
+        <p>
+          <p class="article-content"> Took me <strong>{{ object.time_taken }} hours</strong> to finish.
+        </p>
+      {% endif %}
+      <!-- display read mode if exists -->
+      {% if object.read_mode != None %}
+        <p>
+          <p class="article-content"> Read mode: <strong>{{ object.read_mode }}</strong>.
+        </p>
+      {% endif %}
+      <!-- display rating if exists -->
+      {% if object.rating != None %}
+        <p>
+          <p class="article-content"> My Rating: <strong>{{ object.rating }}</strong> out of 5.
+        </p>
+      {% endif %}
+      {% if object.notes != None %}
       <p>
         <strong>Notes: </strong>
       </p>
       <div class="article-content notes-font">{{ object.notes }} </div>
+      {% endif %}
     </div>
   </article>
 {% endblock content %}

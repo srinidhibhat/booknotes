@@ -22,16 +22,16 @@ class BookListView(ListView):
     template_name = 'books_app/home.html'
     context_object_name = 'books'
     ordering = ['-date_read']
-    # attribute to span out book list view into multiple pages (here 2 objects per page)
-    paginate_by = 5
+    # attribute to span out book list view into multiple pages (here 10 objects per page)
+    paginate_by = 10
 
 # view to list down books added by particular user
 class UserBookListView(ListView):
     model = Book
     template_name = 'books_app/user_books.html'
     context_object_name = 'books'
-    # attribute to span out book list view into multiple pages (here 2 objects per page)
-    paginate_by = 5
+    # attribute to span out book list view into multiple pages (here 10 objects per page)
+    paginate_by = 10
 
     # get only those user objects which matches with selected 'added_by' attribute
     def get_queryset(self):
@@ -46,7 +46,7 @@ class BookDetailView(DetailView):
 # also note that for fn based views we used decorators. here we just inherit from another built-in class
 class BookCreateView(LoginRequiredMixin, CreateView):
     model = Book
-    fields = ['name', 'author', 'notes']
+    fields = ['name', 'author', 'notes', 'date_read']
 
     def form_valid(self, form):
         # automatically set the 'added by' attribute to current logged in user
@@ -56,7 +56,8 @@ class BookCreateView(LoginRequiredMixin, CreateView):
 # view to update the book details
 class BookUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Book
-    fields = ['name', 'author', 'notes', 'pages', 'date_read']
+    fields = ['name', 'author', 'notes', 'pages', 'date_read',
+              'rating', 'read_mode', 'time_taken']
 
     def form_valid(self, form):
         form.instance.added_by = self.request.user

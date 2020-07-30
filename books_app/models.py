@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
 from markupfield.fields import MarkupField
 from PIL import Image
 
@@ -13,6 +14,20 @@ class Book(models.Model):
     pages = models.IntegerField(null=True, blank=True)
     added_by = models.ForeignKey(User, on_delete=models.CASCADE)
     date_read = models.DateField(null=True, blank=True)
+    # keeping it between 1-5
+    rating = models.FloatField(
+        null=True,
+        blank=True,
+        validators=[MaxValueValidator(5), MinValueValidator(1)]
+        )
+    # dropdown with two choices
+    read_mode = models.CharField(
+        max_length=10,
+        null=True,
+        blank=True,
+        choices=(('physical', 'Hardcopy'), ('ebook', 'eBook'))
+        )
+    time_taken = models.FloatField(null=True, blank=True)
 
 
     def __str__(self):
