@@ -13,7 +13,7 @@ Huge thanks to <a href="https://github.com/CoreyMSchafer">Corey Schafer</a> as t
 - Clone the repository into your project folder.
 - Install Python(3.6 or above).
 - Create a virtual environment (optional but recommended) and activate it.
-- Navigate to project folder and install all the prerequisites (using `pip install -r requirements.txt').
+- Navigate to project folder and install all the prerequisites (using `pip install -r requirements.txt`).
 - Edit the *'settings.py'* file (path : booknotes-DjangoProject/myFirstDjangoProject/), to add your own 'SECRET_KEY'.
 - Run these commands to migrate the django models:
   - `python manage.py makemigrations`
