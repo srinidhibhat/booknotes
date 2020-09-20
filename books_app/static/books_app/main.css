@@ -87,9 +87,14 @@ a.article-title:hover {
   font-size: 2.5rem;
 }
 
-.note-box {
+.box-border {
   border: 2px solid #d2a679;
-  font-weight: bold;
   padding: 1em;
   border-radius: 8px;
+}
+
+.notes {
+  font-weight: bold;
+  text-align: justify;
+  text-justify: inter-word;
 }
