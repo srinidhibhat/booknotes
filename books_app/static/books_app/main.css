@@ -41,6 +41,7 @@ ul {
 
 .article-title {
   color: #444444;
+  font-weight: bolder;
 }
 
 a.article-title:hover {
@@ -86,10 +87,9 @@ a.article-title:hover {
   font-size: 2.5rem;
 }
 
-.quote-box {
-  font-family: 'Fondamento';
-}
-
-.notes-font {
-  font-family: 'Caveat', cursive;
+.note-box {
+  border: 2px solid #d2a679;
+  font-weight: bold;
+  padding: 1em;
+  border-radius: 8px;
 }

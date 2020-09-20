@@ -22,10 +22,12 @@ class Book(models.Model):
         )
     # dropdown with two choices
     read_mode = models.CharField(
-        max_length=10,
+        max_length=20,
         null=True,
         blank=True,
-        choices=(('physical', 'Hardcopy'), ('ebook', 'eBook'))
+        choices=(('HardCopy', 'Hard Copy'),
+                 ('ebook-PDF', 'eBook-PDF'),
+                 ('ebook-Kindle', 'eBook-Kindle'))
         )
     time_taken = models.FloatField(null=True, blank=True)
 
